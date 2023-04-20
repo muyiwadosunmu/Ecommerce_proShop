@@ -4,6 +4,7 @@ import connectDB from "./config/dB.js";
 import cors from "cors";
 import colors from "colors";
 import productRoutes from "./routes/productRoutes.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 dotenv.config();
 connectDB();
 const app = express();
@@ -17,6 +18,11 @@ app.get("/", (req, res) => {
 
 /**Routes Middleware */
 app.use("/api/products", productRoutes);
+
+/**404 Fallback handler */
+app.use(notFound);
+/**Error Handler */
+app.use(errorHandler);
 
 app.listen(
   PORT,
