@@ -13,7 +13,7 @@ const ProductScreen = ({ match }) => {
   const { loading, error, product } = productDetails;
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
-  }, [match]);
+  }, [dispatch, match]);
   return (
     <>
       <Link className="btn btn-light my-3" to="/">

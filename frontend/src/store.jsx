@@ -13,7 +13,7 @@ import {
 
 const reducer = combineReducers({
   productList: productListReducer,
-  producDetails: productDetailsReducer,
+  productDetails: productDetailsReducer,
 });
 const initialState = {};
 const middleware = [thunk];
