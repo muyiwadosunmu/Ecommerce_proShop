@@ -22,6 +22,9 @@ const cartItemsFromStorage = localStorage.getItem("cartItems")
   : [];
 const initialState = { cart: { cartItems: cartItemsFromStorage } };
 // const middleware = [thunk];
-const store = configureStore({ reducer, initialState });
+const store = configureStore({
+  reducer,
+  initialState: initialState,
+});
 
 export default store;
