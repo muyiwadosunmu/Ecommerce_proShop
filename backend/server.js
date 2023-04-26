@@ -4,12 +4,16 @@ import connectDB from "./config/dB.js";
 import cors from "cors";
 import colors from "colors";
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+
 dotenv.config();
 connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+/**bodyParser */
+app.use(express.json());
 /**cors implementation */
 app.use(cors());
 app.get("/", (req, res) => {
@@ -18,6 +22,7 @@ app.get("/", (req, res) => {
 
 /**Routes Middleware */
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 /**404 Fallback handler */
 app.use(notFound);
