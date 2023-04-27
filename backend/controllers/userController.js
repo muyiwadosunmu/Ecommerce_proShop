@@ -4,9 +4,9 @@ import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 
 // @description - Auth user & get JWT token
-// @router GET /api/users/login
+// @router POST /api/users/login
 // @access Public
-const authUser = asyncHandler(async () => {
+const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user && user.matchPassword(password)) {
@@ -25,4 +25,21 @@ const authUser = asyncHandler(async () => {
   //   res.send({ email, password });
 });
 
-export { authUser };
+// @description - Get user profile
+// @router GET /api/users/profile
+// @access Private
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(401);
+    throw new Error("User not found");
+  }
+});
+export { authUser, getUserProfile };
