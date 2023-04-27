@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import colors from "colors";
 import asyncHandler from "express-async-handler";
+import generateToken from "../utils/generateToken.js";
 
 // @description - Auth user & get JWT token
 // @router GET /api/users/login
@@ -14,7 +15,7 @@ const authUser = asyncHandler(async () => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      tojen: null,
+      token: generateToken(user._id),
     });
   } else {
     res.status(401);
