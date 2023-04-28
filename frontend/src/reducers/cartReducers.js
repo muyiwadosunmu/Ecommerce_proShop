@@ -1,7 +1,6 @@
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
-  console.log(state);
   switch (action.type) {
     //was a little tricky that's why it was stored in  variable
     case CART_ADD_ITEM:

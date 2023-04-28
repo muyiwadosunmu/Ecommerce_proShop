@@ -5,7 +5,7 @@ import asyncHandler from "express-async-handler";
 // @description - Fetch all products
 // @router GET /api/products
 // @access Public
-const getProducts = asyncHandler(async () => {
+const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
   res.status(200).json(products);
 });
@@ -13,7 +13,7 @@ const getProducts = asyncHandler(async () => {
 // @description - Fetch a products
 // @router GET /api/products/:id
 // @access Public
-const getProductById = asyncHandler(async () => {
+const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id).exec();
   if (product) {
     res.status(200).json(product);
