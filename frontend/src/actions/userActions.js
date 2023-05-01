@@ -39,7 +39,6 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
-<<<<<<< HEAD
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -81,5 +80,3 @@ export const logout = () => (dispatch) => {
     type: USER_LOGOUT,
   });
 };
-=======
->>>>>>> parent of ba7c74b (Show user in Navbar)
