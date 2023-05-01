@@ -6,7 +6,6 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_FAIL,
   USER_REGISTER_SUCCESS,
-  RE,
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
