@@ -1,5 +1,7 @@
+import mongoose from "mongoose";
 import Product from "../models/productModel.js";
 import colors from "colors";
+
 import asyncHandler from "express-async-handler";
 
 // @description - Fetch all products
@@ -14,7 +16,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // @router GET /api/products/:id
 // @access Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id).exec();
+  const product = await Product.findById(req.params.id);
   if (product) {
     res.status(200).json(product);
   } else {
