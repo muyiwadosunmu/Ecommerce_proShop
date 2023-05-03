@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Loader from "../components/Loader";
-import {} from "../../../backend/controllers/userController";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -15,6 +14,7 @@ const ProfileScreen = ({ location, history }) => {
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
+
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
@@ -28,7 +28,7 @@ const ProfileScreen = ({ location, history }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!user.name) dispatch(getUserDetails("profile"));
+      if (!user.name) dispatch(getUserDetails(userInfo.Id));
       else {
         setName(user.name);
         setEmail(user.email);
@@ -48,7 +48,7 @@ const ProfileScreen = ({ location, history }) => {
   return (
     <Row>
       <Col md={3}>
-        <h2>User Prodile</h2>
+        <h2>User Profile</h2>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
         {success && <Message variant="success">Profile Updated</Message>}

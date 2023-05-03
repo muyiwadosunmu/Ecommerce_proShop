@@ -80,7 +80,7 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = (_id) => async (dispatch, getState) => {
   try {
     dispatch({
       type: USER_DETAILS_REQUEST,
@@ -96,7 +96,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.get(
-      `http://localhost:3000/api/users/${id}`,
+      `http://localhost:3000/api/users/${_id}`,
       config
     );
     dispatch({

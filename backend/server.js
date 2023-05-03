@@ -21,8 +21,8 @@ app.get("/", (req, res) => {
 });
 
 /**Routes Middleware */
-app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 /**404 Fallback handler */
 app.use(notFound);

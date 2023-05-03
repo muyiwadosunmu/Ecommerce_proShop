@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
-import Product from "../models/productModel.js";
+const Schema = mongoose.Schema;
 import colors from "colors";
+const ObjectId = Schema.ObjectId;
+import Product from "../models/productModel.js";
 
 import asyncHandler from "express-async-handler";
 
@@ -16,9 +18,9 @@ const getProducts = asyncHandler(async (req, res) => {
 // @router GET /api/products/:id
 // @access Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findOne(req.params["_id"]);
   if (product) {
-    res.status(200).json(product);
+    res.json(product);
   } else {
     res.status(404);
     throw new Error("Product not found");
