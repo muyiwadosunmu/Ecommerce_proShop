@@ -18,7 +18,7 @@ const getProducts = asyncHandler(async (req, res) => {
 // @router GET /api/products/:id
 // @access Public
 const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.findOne(req.params["_id"]);
+  const product = await Product.findById(req.params.id);
   if (product) {
     res.json(product);
   } else {
