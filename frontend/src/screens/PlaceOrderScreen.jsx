@@ -47,7 +47,7 @@ const PlaceOrderScreen = ({ history }) => {
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
-        taxPrice: cart.cart.taxPrice,
+        taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
     );
@@ -141,7 +141,9 @@ const PlaceOrderScreen = ({ history }) => {
                   className="btn-block"
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
-                ></Button>
+                >
+                  Place Order
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
